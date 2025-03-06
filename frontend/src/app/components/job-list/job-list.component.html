@@ -1,0 +1,23 @@
+<div>
+  <h1>Job Search</h1>
+  <input type="text" [(ngModel)]="title" placeholder="Job Title">
+  <input type="text" [(ngModel)]="location" placeholder="Location">
+  <select [(ngModel)]="level">
+    <option value="">All Levels</option>
+    <option value="Entry">Entry</option>
+    <option value="Mid">Mid</option>
+    <option value="Senior">Senior</option>
+  </select>
+  <button (click)="searchJobs()">Search</button>
+
+  <div *ngIf="jobs.length">
+    <h2>Available Jobs</h2>
+    <div *ngFor="let job of jobs" class="job">
+      <h3>{{ job.title }}</h3>
+      <p><b>Location:</b> {{ job.location }}</p>
+      <p><b>Level:</b> {{ job.level }}</p>
+      <p>{{ job.description }}</p>
+      <button (click)="apply(job.id)">Apply</button>
+    </div>
+  </div>
+</div>
